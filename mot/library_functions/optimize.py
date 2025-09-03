@@ -5,7 +5,7 @@ All routines are prefixed with 'eispack_' for use in MOT.
 Reference:
     https://people.sc.fsu.edu/~jburkardt/c_src/eispack/eispack.html .
 """
-from pkg_resources import resource_filename
+from importlib.resources import files
 
 from mot.lib.kernel_data import LocalMemory
 from mot.library_functions import SimpleCLLibrary, SimpleCLLibraryFromFile
@@ -14,7 +14,7 @@ __author__ = 'Robbert Harms'
 __date__ = '2019-12-17'
 __maintainer__ = 'Robbert Harms'
 __email__ = 'robbert@xkls.nl'
-__licence__ = 'LGPL v3'
+__licence__ = 'LGPL v3'   
 
 
 class bracket_spf(SimpleCLLibraryFromFile):
@@ -38,7 +38,7 @@ class bracket_spf(SimpleCLLibraryFromFile):
 
         super().__init__(
             'int', 'bracket' + params['SPF_NAME'], [],
-            resource_filename('mot', 'data/opencl/bracket_spf.cl'),
+            files('mot').joinpath('data/opencl/bracket_spf.cl'),
             var_replace_dict=params)
 
 
@@ -63,7 +63,7 @@ class nmsimplex_spf(SimpleCLLibraryFromFile):
 
         super().__init__(
             'int', 'nmsimplex' + params['SPF_NAME'], [],
-            resource_filename('mot', 'data/opencl/nmsimplex_spf.cl'),
+            files('mot').joinpath('data/opencl/nmsimplex_spf.cl'),
             var_replace_dict=params)
 
 
@@ -104,7 +104,7 @@ class Powell(SimpleCLLibraryFromFile):
                 'void* data',
                 'local mot_float_type* scratch_mot_float_type'
             ],
-            resource_filename('mot', 'data/opencl/powell.cl'),
+            files('mot').joinpath('data/opencl/powell.cl'),
             var_replace_dict=params, **kwargs)
 
     def get_kernel_data(self):
@@ -220,7 +220,7 @@ class Subplex(SimpleCLLibraryFromFile):
                 'local mot_float_type* subplex_scratch_float',
                 'local int* subplex_scratch_int'
             ],
-            resource_filename('mot', 'data/opencl/subplex.cl'), var_replace_dict=params, **kwargs)
+            files('mot').joinpath('data/opencl/subplex.cl'), var_replace_dict=params, **kwargs)
 
     def get_kernel_data(self):
         """Get the kernel data needed for this optimization routine to work."""
@@ -275,7 +275,7 @@ class LevenbergMarquardt(SimpleCLLibraryFromFile):
                              'void* data',
                              'mot_float_type* scratch_mot_float_type',
                              'int* scratch_int'],
-            resource_filename('mot', 'data/opencl/lmmin.cl'),
+            files('mot').joinpath('data/opencl/lmmin.cl'),
             var_replace_dict=var_replace_dict, **kwargs)
 
     def get_kernel_data(self):

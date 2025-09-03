@@ -1,4 +1,4 @@
-from pkg_resources import resource_filename
+from importlib.resources import files
 from mot.library_functions import SimpleCLLibraryFromFile, SimpleCLLibrary
 
 __author__ = 'Robbert Harms'
@@ -13,7 +13,7 @@ class CerfImWOfX(SimpleCLLibraryFromFile):
         """Calculate the cerf."""
         super().__init__(
             'void', 'cerf', [],
-            resource_filename('mot', 'data/opencl/cerf/im_w_of_x.cl'))
+            files('mot').joinpath('data/opencl/cerf/im_w_of_x.cl'))
 
 
 class dawson(SimpleCLLibrary):

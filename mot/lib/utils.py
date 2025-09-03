@@ -11,7 +11,7 @@ import numpy as np
 import pyopencl as cl
 import pyopencl.array as cl_array
 import tatsu
-from pkg_resources import resource_filename
+from importlib.resources import files
 
 __author__ = 'Robbert Harms'
 __date__ = "2014-05-13"
@@ -286,7 +286,8 @@ def get_cl_utility_definitions(double_precision, include_complex=True):
         str: defines the mot_float_type types, the epsilon and the MIN and MAX values.
     """
     if include_complex:
-        with open(os.path.abspath(resource_filename('mot', 'data/opencl/complex.h')), 'r') as f:
+        complex_h_path = files('mot').joinpath('data/opencl/complex.h')
+        with complex_h_path.open('r') as f:
             complex_number_support = f.read()
     else:
         complex_number_support = ''

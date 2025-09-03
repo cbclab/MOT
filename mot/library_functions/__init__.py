@@ -2,7 +2,7 @@ import os
 
 from mot.lib.cl_function import SimpleCLCodeObject
 from mot.library_functions.base import SimpleCLLibrary, SimpleCLLibraryFromFile, CLLibrary
-from pkg_resources import resource_filename
+from importlib.resources import files
 
 from mot.library_functions.eispack import eispack_tred2, eispack_tql2
 from mot.library_functions.unity import log1pmx
@@ -48,13 +48,11 @@ class Rand123(SimpleCLCodeObject):
     def __init__(self):
         generator = 'philox'
 
-        src = open(os.path.abspath(resource_filename('mot', 'data/opencl/random123/openclfeatures.h'), ), 'r').read()
-        src += open(os.path.abspath(resource_filename('mot', 'data/opencl/random123/array.h'), ), 'r').read()
-        src += open(os.path.abspath(resource_filename('mot', 'data/opencl/random123/{}.h'.format(generator)), ),
-                    'r').read()
-        src += (open(os.path.abspath(resource_filename('mot', 'data/opencl/random123/rand123.h'), ), 'r').read() % {
-            'GENERATOR_NAME': (generator)
-        })
+        src = files('mot').joinpath('data/opencl/random123/openclfeatures.h').read_text()
+        src += files('mot').joinpath('data/opencl/random123/array.h').read_text()
+        src += files('mot').joinpath(f'data/opencl/random123/{generator}.h').read_text()
+        src += files('mot').joinpath('data/opencl/random123/rand123.h').read_text() % {'GENERATOR_NAME': generator}
+
         super().__init__(src)
 
 
@@ -70,7 +68,7 @@ class EuclidianNormFunction(SimpleCLLibraryFromFile):
             memtype,
             self.__class__.__name__ + '_' + memspace + '_' + memtype,
             [],
-            resource_filename('mot', 'data/opencl/euclidian_norm.cl'),
+            files('mot').joinpath('data/opencl/euclidian_norm.cl'),
             var_replace_dict={'MEMSPACE': memspace, 'MEMTYPE': memtype})
 
 
