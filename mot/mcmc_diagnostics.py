@@ -364,7 +364,7 @@ def estimate_multivariate_ess_sigma(samples, batch_size):
     nmr_offsets = chain_length - nmr_batches * batch_size + 1
 
     for offset in range(nmr_offsets):
-        batches = np.reshape(samples[:, np.array(offset + np.arange(0, nmr_batches * batch_size), dtype=np.int)].T,
+        batches = np.reshape(samples[:, np.array(offset + np.arange(0, nmr_batches * batch_size), dtype=int)].T,
                              [batch_size, nmr_batches, nmr_params], order='F')
 
         batch_means = np.squeeze(np.mean(batches, axis=0, dtype=np.float64))
