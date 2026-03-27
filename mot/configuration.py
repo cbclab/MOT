@@ -12,7 +12,7 @@ using :py:func:`config_context`. Example:
         ...
 
 """
-import collections
+import collections.abc
 from contextlib import contextmanager
 import numpy as np
 
@@ -311,7 +311,7 @@ class CLRuntimeInfo:
         """Load the load balancer from a polymorphic datatype."""
         if load_balancer is None:
             return get_load_balancer()
-        if isinstance(load_balancer, collections.Iterable):
+        if isinstance(load_balancer, collections.abc.Iterable):
             return FractionalLoad(load_balancer)
         return load_balancer or EvenDistribution()
 
