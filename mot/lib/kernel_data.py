@@ -692,7 +692,7 @@ class Array(KernelData):
         self._is_readable = 'r' in mode
         self._is_writable = 'w' in mode
 
-        self._data = data
+        self._data = np.ascontiguousarray(data)  # array must be contiguous to be converted to ctype
         if ctype and not ctype.startswith('mot_float_type'):
             self._data = convert_data_to_dtype(self._data, ctype)
 
@@ -712,7 +712,7 @@ class Array(KernelData):
             self._data_length = self._data.size
 
         if self._as_scalar and len(np.squeeze(self._data).shape) > 1:
-            raise ValueError('The option "as_scalar" was set, but the data has more than one dimensions.')
+            raise ValueError('The option "as_scalar" was set, but the data has more than one dimension.')
 
     @property
     def ctype(self):
