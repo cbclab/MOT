@@ -647,7 +647,7 @@ def multiprocess_mapping(func, iterable):
         return list(map(func, iterable))
 
 
-_tatsu_cl_function = R'''
+_tatsu_cl_function = r'''
     function = {documentation}* [kernel] [address_space] data_type function_name arglist body;
     documentation = '/*' ->'*/';
     kernel = ['__'] 'kernel';
@@ -660,11 +660,11 @@ _tatsu_cl_function = R'''
     compound_statement = '{' {[/[^\{\}]*/] [compound_statement]}* '}';
 '''
 
-_extract_cl_functions_parser = tatsu.compile('''
+_extract_cl_functions_parser = tatsu.compile(r'''
     result = {function}+;
 ''' + _tatsu_cl_function)
 
-_split_cl_function_parser = tatsu.compile('''
+_split_cl_function_parser = tatsu.compile(r'''
     result = function;
 ''' + _tatsu_cl_function)
 

@@ -552,7 +552,7 @@ class CLFunctionParameter:
         raise NotImplementedError()
 
 
-_cl_data_type_parser = tatsu.compile('''
+_cl_data_type_parser = tatsu.compile(r'''
     result = [address_space] {type_qualifiers}* ctype {pointer_star}* {pointer_qualifiers}* name {array_size}*;
 
     address_space = ['__'] ('local' | 'global' | 'constant' | 'private');
