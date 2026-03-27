@@ -53,7 +53,8 @@ class TestRosenbrock(CLRoutineTestCase):
                               nmr_observations=self._nmr_observations, options=options)
             v = output['x']
             for ind in range(2):
-                self.assertAlmostEqual(v[0, ind], 1, places=3, msg=method)
+                with self.subTest(f"method={method},index={ind}"):
+                    self.assertAlmostEqual(v[0, ind], 1, places=3, msg=method)
 
 
 class TestLSQNonLinExample(CLRoutineTestCase):
@@ -87,7 +88,8 @@ class TestLSQNonLinExample(CLRoutineTestCase):
                               nmr_observations=self._nmr_observations)
             v = output['x']
             for ind in range(2):
-                self.assertAlmostEqual(v[0, ind], 0.2578, places=3, msg=method)
+                with self.subTest(f"method={method},ind={ind}"):
+                    self.assertAlmostEqual(v[0, ind], 0.2578, places=3, msg=method)
 
 
 if __name__ == '__main__':
