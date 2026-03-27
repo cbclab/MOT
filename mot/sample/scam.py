@@ -15,7 +15,7 @@ class SingleComponentAdaptiveMetropolis(AbstractRWMSampler):
 
     def __init__(self, ll_func, log_prior_func, x0, proposal_stds,
                  waiting_period=100, scaling_factor=2.4, epsilon=1e-5, **kwargs):
-        r"""An implementation of the Single Component Adaptive Metropolis (SCAM) MCMC algorithm [1].
+        R"""An implementation of the Single Component Adaptive Metropolis (SCAM) MCMC algorithm [1].
 
         The SCAM method works by adapting the proposal standard deviation to the empirical standard deviation of the
         component's marginal distribution. That is, the standard deviation :math:`\sigma_i^{(t)}` for the proposal

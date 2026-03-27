@@ -60,7 +60,7 @@ def get_log_prior_function(nmr_parameters):
 
 
 if __name__ == '__main__':
-    """MOT example of fitting the multidimensional generalized Rosenbrock function.
+    R"""MOT example of fitting the multidimensional generalized Rosenbrock function.
 
     This creates ``nmr_problems`` Rosenbrock instances, each with ``nmr_params`` parameters.
 

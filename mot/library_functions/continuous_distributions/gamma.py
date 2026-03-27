@@ -12,7 +12,7 @@ __licence__ = 'LGPL v3'
 
 class gamma_pdf(SimpleCLLibrary):
     def __init__(self):
-        r"""Computes the Gamma probability density function using the shape and scale parameterization.
+        R"""Computes the Gamma probability density function using the shape and scale parameterization.
 
         This computes the gamma PDF as:
 
@@ -32,7 +32,7 @@ class gamma_pdf(SimpleCLLibrary):
 
 class gamma_logpdf(SimpleCLLibrary):
     def __init__(self):
-        r"""Computes the log of the Gamma probability density function using the shape and scale parameterization.
+        R"""Computes the log of the Gamma probability density function using the shape and scale parameterization.
 
         This computes the gamma PDF as:
 
@@ -54,7 +54,7 @@ class gamma_logpdf(SimpleCLLibrary):
 
 class gamma_cdf(SimpleCLLibrary):
     def __init__(self):
-        r"""Calculate the Cumulative Distribution Function of the Gamma function.
+        R"""Calculate the Cumulative Distribution Function of the Gamma function.
 
         This computes: ``lower_incomplete_gamma(k, x/theta) / gamma(k)``
 
@@ -96,7 +96,7 @@ class gamma_ppf(SimpleCLLibrary):
 
 class gamma_cdf_approx(SimpleCLLibrary):
     def __init__(self):
-        r"""Approximate the Cumulative Distribution Function of the Gamma function.
+        R"""Approximate the Cumulative Distribution Function of the Gamma function.
 
         This uses the approximation from Revfeim [1] to compute the cdf for x given the shape and scale parameters.
 
@@ -135,7 +135,7 @@ class gamma_cdf_approx(SimpleCLLibrary):
 
 class gamma_ppf_approx(SimpleCLLibrary):
     def __init__(self):
-        r"""Approximates the Gamma percentile point function.
+        R"""Approximates the Gamma percentile point function.
 
         This uses the approximation from Revfeim [1] to compute the ppf for y given the shape and scale parameters.
 

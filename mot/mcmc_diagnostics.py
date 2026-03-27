@@ -19,7 +19,7 @@ __email__ = "robbert@xkls.nl"
 
 
 def multivariate_ess(samples, batch_size_generator=None):
-    r"""Estimate the multivariate Effective Sample Size for the samples of every problem.
+    R"""Estimate the multivariate Effective Sample Size for the samples of every problem.
 
     This essentially applies :func:`estimate_multivariate_ess` to every problem.
 
@@ -48,7 +48,7 @@ class _MultivariateESSMultiProcessing:
 
 
 def univariate_ess(samples, method='standard_error', **kwargs):
-    r"""Estimate the univariate Effective Sample Size for the samples of every problem.
+    R"""Estimate the univariate Effective Sample Size for the samples of every problem.
 
     This computes the ESS using:
 
@@ -127,7 +127,7 @@ def _get_sample_generator(samples):
 
 
 def get_auto_correlation(chain, lag):
-    r"""Estimates the auto correlation for the given chain (1d vector) with the given lag.
+    R"""Estimates the auto correlation for the given chain (1d vector) with the given lag.
 
     Given a lag :math:`k`, the auto correlation coefficient :math:`\rho_{k}` is estimated as:
 
@@ -151,7 +151,7 @@ def get_auto_correlation(chain, lag):
 
 
 def get_auto_correlation_time(chain, max_lag=None):
-    r"""Compute the auto correlation time up to the given lag for the given chain (1d vector).
+    R"""Compute the auto correlation time up to the given lag for the given chain (1d vector).
 
     This will halt when the maximum lag :math:`m` is reached or when the sum of two consecutive lags for any
     odd lag is lower or equal to zero.
@@ -195,7 +195,7 @@ def get_auto_correlation_time(chain, max_lag=None):
 
 
 def estimate_univariate_ess_autocorrelation(chain, max_lag=None):
-    r"""Estimate effective sample size (ESS) using the autocorrelation of the chain.
+    R"""Estimate effective sample size (ESS) using the autocorrelation of the chain.
 
     The ESS is an estimate of the size of an iid sample with the same variance as the current sample.
     This function implements the ESS as described in Kass et al. (1998) and Robert and Casella (2004; p. 500):
@@ -228,7 +228,7 @@ def estimate_univariate_ess_autocorrelation(chain, max_lag=None):
 
 
 def estimate_univariate_ess_standard_error(chain, batch_size_generator=None, compute_method=None):
-    r"""Compute the univariate ESS using the standard error method.
+    R"""Compute the univariate ESS using the standard error method.
 
     This computes the ESS using:
 
@@ -256,7 +256,7 @@ def estimate_univariate_ess_standard_error(chain, batch_size_generator=None, com
 
 
 def minimum_multivariate_ess(nmr_params, alpha=0.05, epsilon=0.05):
-    r"""Calculate the minimum multivariate Effective Sample Size you will need to obtain the desired precision.
+    R"""Calculate the minimum multivariate Effective Sample Size you will need to obtain the desired precision.
 
     This implements the inequality from Vats et al. (2016):
 
@@ -289,7 +289,7 @@ def minimum_multivariate_ess(nmr_params, alpha=0.05, epsilon=0.05):
 
 
 def multivariate_ess_precision(nmr_params, multi_variate_ess, alpha=0.05):
-    r"""Calculate the precision given your multivariate Effective Sample Size.
+    R"""Calculate the precision given your multivariate Effective Sample Size.
 
     Given that you obtained :math:`ESS` multivariate effective samples in your estimate you can calculate the
     precision with which you approximated your desired confidence region.
@@ -324,7 +324,7 @@ def multivariate_ess_precision(nmr_params, multi_variate_ess, alpha=0.05):
 
 
 def estimate_multivariate_ess_sigma(samples, batch_size):
-    r"""Calculates the Sigma matrix which is part of the multivariate ESS calculation.
+    R"""Calculates the Sigma matrix which is part of the multivariate ESS calculation.
 
     This implementation is based on the Matlab implementation found at: https://github.com/lacerbi/multiESS
 
@@ -378,7 +378,7 @@ def estimate_multivariate_ess_sigma(samples, batch_size):
 
 
 def estimate_multivariate_ess(samples, batch_size_generator=None, full_output=False):
-    r"""Compute the multivariate Effective Sample Size of your (single instance set of) samples.
+    R"""Compute the multivariate Effective Sample Size of your (single instance set of) samples.
 
     This multivariate ESS is defined in Vats et al. (2016) and is given by:
 
@@ -471,7 +471,7 @@ class MultiVariateESSBatchSizeGenerator:
     """
 
     def get_multivariate_ess_batch_sizes(self, nmr_params, chain_length):
-        r"""Get the batch sizes to use for the calculation of the Effective Sample Size (ESS).
+        R"""Get the batch sizes to use for the calculation of the Effective Sample Size (ESS).
 
         This should return a list of batch sizes that the ESS calculation will use to determine :math:`\Sigma`
 
@@ -493,7 +493,7 @@ class UniVariateESSBatchSizeGenerator:
     """
 
     def get_univariate_ess_batch_sizes(self, chain_length):
-        r"""Get the batch sizes to use for the calculation of the univariate Effective Sample Size (ESS).
+        R"""Get the batch sizes to use for the calculation of the univariate Effective Sample Size (ESS).
 
         This should return a list of batch sizes that the ESS calculation will use to determine :math:`\sigma`
 
@@ -506,7 +506,7 @@ class UniVariateESSBatchSizeGenerator:
 
 
 class SquareRootSingleBatch(MultiVariateESSBatchSizeGenerator, UniVariateESSBatchSizeGenerator):
-    r"""Returns :math:`\sqrt(n)`."""
+    R"""Returns :math:`\sqrt(n)`."""
 
     def get_multivariate_ess_batch_sizes(self, nmr_params, chain_length):
         return [np.floor(chain_length**(1/2.0))]
@@ -516,7 +516,7 @@ class SquareRootSingleBatch(MultiVariateESSBatchSizeGenerator, UniVariateESSBatc
 
 
 class CubeRootSingleBatch(MultiVariateESSBatchSizeGenerator, UniVariateESSBatchSizeGenerator):
-    r"""Returns :math:`n^{1/3}`."""
+    R"""Returns :math:`n^{1/3}`."""
 
     def get_multivariate_ess_batch_sizes(self, nmr_params, chain_length):
         return [np.floor(chain_length**(1/3.0))]
@@ -528,7 +528,7 @@ class CubeRootSingleBatch(MultiVariateESSBatchSizeGenerator, UniVariateESSBatchS
 class LinearSpacedBatchSizes(MultiVariateESSBatchSizeGenerator):
 
     def __init__(self, nmr_batches=200):
-        r"""Returns a number of batch sizes from which the ESS algorithm will select the one with the lowest ESS.
+        R"""Returns a number of batch sizes from which the ESS algorithm will select the one with the lowest ESS.
 
         This is a conservative choice since the lowest ESS of all batch sizes is chosen.
 

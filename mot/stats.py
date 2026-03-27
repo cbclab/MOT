@@ -131,7 +131,7 @@ def fit_truncated_gaussian(samples, lower_bounds, upper_bounds):
 
 
 def gaussian_overlapping_coefficient(means_0, stds_0, means_1, stds_1, lower=None, upper=None):
-    """Compute the overlapping coefficient of two Gaussian continuous_distributions.
+    R"""Compute the overlapping coefficient of two Gaussian continuous_distributions.
 
     This computes the :math:`\int_{-\infty}^{\infty}{\min(f(x), g(x))\partial x}` where
     :math:`f \sim \mathcal{N}(\mu_0, \sigma_0^{2})` and :math:`f \sim \mathcal{N}(\mu_1, \sigma_1^{2})` are normally
@@ -160,7 +160,7 @@ def gaussian_overlapping_coefficient(means_0, stds_0, means_1, stds_1, lower=Non
 
 
 def deviance_information_criterions(mean_posterior_lls, ll_per_sample):
-    r"""Calculates the Deviance Information Criteria (DIC) using three methods.
+    R"""Calculates the Deviance Information Criteria (DIC) using three methods.
 
     This returns a dictionary returning the ``DIC_2002``, the ``DIC_2004`` and the ``DIC_Ando_2011`` method.
     The first is based on Spiegelhalter et al (2002), the second based on Gelman et al. (2004) and the last on
@@ -251,7 +251,7 @@ class _ComputeGaussianOverlap:
         self.upper = upper
 
     def __call__(self, data):
-        """Compute the overlap.
+        R"""Compute the overlap.
 
         This expects data to be a tuple consisting of :math:`\mu_0, \sigma_0, \mu_1, \sigma_1`.
 

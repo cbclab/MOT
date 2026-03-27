@@ -11,7 +11,7 @@ from mot.library_functions.continuous_distributions.gamma import igamc, igamci
 
 class invgamma_pdf(SimpleCLLibrary):
     def __init__(self):
-        r"""Computes the inverse-Gamma probability density function using the shape and scale parameterization.
+        R"""Computes the inverse-Gamma probability density function using the shape and scale parameterization.
 
         This computes the inverse-Gamma PDF as:
 
@@ -30,7 +30,7 @@ class invgamma_pdf(SimpleCLLibrary):
 
 class invgamma_logpdf(SimpleCLLibrary):
     def __init__(self):
-        r"""Computes the log of the inverse-Gamma probability density function with shape and scale parameterization.
+        R"""Computes the log of the inverse-Gamma probability density function with shape and scale parameterization.
         """
         super().__init__('''
             double invgamma_logpdf(double x, double shape, double scale){
@@ -42,7 +42,7 @@ class invgamma_logpdf(SimpleCLLibrary):
 
 class invgamma_cdf(SimpleCLLibrary):
     def __init__(self):
-        r"""Calculate the Cumulative Distribution Function of the inverse-Gamma function.
+        R"""Calculate the Cumulative Distribution Function of the inverse-Gamma function.
 
         This implementation is copied from SciPy (09-01-2020).
 

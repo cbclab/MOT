@@ -17,7 +17,7 @@ def estimate_hessian(objective_func, parameters,
                      step_ratio=2, nmr_steps=5,
                      max_step_sizes=None,
                      data=None, cl_runtime_info=None):
-    """Estimate and return the upper triangular elements of the Hessian of the given function at the given parameters.
+    R"""Estimate and return the upper triangular elements of the Hessian of the given function at the given parameters.
 
     This calculates the Hessian using central difference (using a 2nd order Taylor expansion) with a Richardson
     extrapolation over the proposed sequence of steps. If enough steps are given, we apply a Wynn epsilon extrapolation

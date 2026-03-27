@@ -260,7 +260,7 @@ latex_elements = {
     'pointsize': '10pt',
 
     # Additional stuff for the LaTeX preamble.
-    'preamble': r"""
+    'preamble': R"""
         \makeatletter
         \def\@makechapterhead#1{%
           %%%%\vspace*{50\p@}% %%% removed!

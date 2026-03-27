@@ -10,9 +10,9 @@ __licence__ = 'LGPL v3'
 class real_zeros_cubic_pol(SimpleCLLibrary):
 
     def __init__(self):
-        """Returns (only) the real roots of a cubic polynomial.
+        R"""Returns (only) the real roots of a cubic polynomial.
 
-        This computes :math:`p(x) = \\sum_i c[i] * x^i = 0`, i.e. tries to find x such that :math:`p(x) = 0`
+        This computes :math:`p(x) = \sum_i c[i] * x^i = 0`, i.e. tries to find x such that :math:`p(x) = 0`
         using the algebraic method.
 
         The coefficients and the roots may point to the same address space to save memory.

@@ -647,7 +647,7 @@ def multiprocess_mapping(func, iterable):
         return list(map(func, iterable))
 
 
-_tatsu_cl_function = '''
+_tatsu_cl_function = R'''
     function = {documentation}* [kernel] [address_space] data_type function_name arglist body;
     documentation = '/*' ->'*/';
     kernel = ['__'] 'kernel';

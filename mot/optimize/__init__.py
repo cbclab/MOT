@@ -15,7 +15,7 @@ __licence__ = 'LGPL v3'
 
 def minimize(func, x0, data=None, method=None, lower_bounds=None, upper_bounds=None, constraints_func=None,
              nmr_observations=None, cl_runtime_info=None, options=None, use_local_reduction=True):
-    """Minimization of one or more variables.
+    R"""Minimization of one or more variables.
 
     For an easy wrapper of function maximization, see :func:`maximize`.
 

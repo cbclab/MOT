@@ -367,7 +367,7 @@ class AbstractRWMSampler(AbstractSampler):
 
     def __init__(self, ll_func, log_prior_func, x0, proposal_stds, use_random_scan=False,
                  finalize_proposal_func=None, **kwargs):
-        """An abstract basis for Random Walk Metropolis (RWM) samplers.
+        R"""An abstract basis for Random Walk Metropolis (RWM) samplers.
 
         Random Walk Metropolis (RWM) samplers require for every parameter and every modeling instance an proposal
         standard deviation, used in the random walk.

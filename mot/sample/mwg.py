@@ -10,7 +10,7 @@ __email__ = "robbert@xkls.nl"
 class MetropolisWithinGibbs(AbstractRWMSampler):
 
     def __init__(self, ll_func, log_prior_func, x0, proposal_stds, **kwargs):
-        r"""An implementation of the Metropolis-Within-Gibbs MCMC algorithm [1].
+        R"""An implementation of the Metropolis-Within-Gibbs MCMC algorithm [1].
 
         This does not scale the proposal standard deviations during sampling.
 
