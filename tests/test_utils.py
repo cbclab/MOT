@@ -35,7 +35,7 @@ class test_device_supports_double(unittest.TestCase):
     def test_has_double(self):
         for platform in cl.get_platforms():
             for device in platform.get_devices():
-                has_double = device.get_info(cl.device_info.DOUBLE_FP_CONFIG) == 63
+                has_double = device.get_info(cl.device_info.DOUBLE_FP_CONFIG) & 63 == 63
                 assert(device_supports_double(device) == has_double)
 
 
