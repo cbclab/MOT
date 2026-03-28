@@ -9,7 +9,6 @@ from contextlib import contextmanager
 from functools import reduce
 import numpy as np
 import pyopencl as cl
-import pyopencl.array as cl_array
 import tatsu
 from importlib.resources import files
 
@@ -146,7 +145,7 @@ def ctype_to_dtype(cl_type, mot_float_type='float'):
                 raw_type = mot_float_type
 
         vector_type = raw_type + str(vector_length)
-        return getattr(cl_array.vec, vector_type)
+        return getattr(cl.cltypes, vector_type)
     else:
         if cl_type == 'mot_float_type':
             cl_type = mot_float_type
