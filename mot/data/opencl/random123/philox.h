@@ -34,7 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 /** \cond HIDDEN_FROM_DOXYGEN */
 
-#include "features/compilerfeatures.h"
+#include "compilerfeatures.h"
 #include "array.h"
 
 

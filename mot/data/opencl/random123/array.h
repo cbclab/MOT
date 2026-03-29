@@ -31,8 +31,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 #ifndef _r123array_dot_h__
 #define _r123array_dot_h__
-#include "features/compilerfeatures.h"
-#include "features/sse.h"
+#include "compilerfeatures.h"
+#include "sse.h"
 
 #if !defined(__cplusplus) || defined(__METAL_MACOS__)
 #define CXXMETHODS(_N, W, T)

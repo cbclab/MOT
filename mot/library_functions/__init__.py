@@ -2,7 +2,7 @@ import os
 
 from mot.lib.cl_function import SimpleCLCodeObject
 from mot.library_functions.base import SimpleCLLibrary, SimpleCLLibraryFromFile, CLLibrary
-from importlib.resources import files
+from importlib.resources import files, as_file
 
 from mot.library_functions.eispack import eispack_tred2, eispack_tql2
 from mot.library_functions.unity import log1pmx
@@ -48,7 +48,22 @@ class Rand123(SimpleCLCodeObject):
     def __init__(self):
         generator = 'philox'
 
-        src = files('mot').joinpath('data/opencl/random123/openclfeatures.h').read_text()
+        src = ''
+        for file in ('gccfeatures.h',
+                     'clangfeatures.h',
+                     'fujitsufeatures.h',
+                     'iccfeatures.h',
+                     'metalfeatures.h',
+                     'msvcfeatures.h',
+                     'nvccfeatures.h',
+                     'open64features.h',
+                     'pgccfeatures.h',
+                     'sunprofeatures.h',
+                     'xlcfeatures.h',
+                     'compilerfeatures.h',
+                     'sse.h',
+                     'openclfeatures.h'):
+            src += files('mot').joinpath(f'data/opencl/random123/features/{file}').read_text()
         src += files('mot').joinpath('data/opencl/random123/array.h').read_text()
         src += files('mot').joinpath(f'data/opencl/random123/{generator}.h').read_text()
         src += files('mot').joinpath('data/opencl/random123/rand123.h').read_text() % {'GENERATOR_NAME': generator}
