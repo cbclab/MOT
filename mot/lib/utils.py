@@ -286,8 +286,7 @@ def get_cl_utility_definitions(double_precision, include_complex=True):
     """
     if include_complex:
         complex_h_path = files('mot').joinpath('data/opencl/complex.h')
-        with complex_h_path.open('r') as f:
-            complex_number_support = f.read()
+        complex_number_support = complex_h_path.read_text()
     else:
         complex_number_support = ''
 

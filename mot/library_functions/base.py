@@ -1,4 +1,5 @@
 import os
+from importlib.resources.abc import Traversable
 from textwrap import indent, dedent
 from mot.lib.cl_function import CLFunction, SimpleCLFunction
 from mot.lib.utils import split_cl_function
@@ -37,14 +38,17 @@ class SimpleCLLibraryFromFile(CLLibrary, SimpleCLFunction):
 
         Args:
             cl_function_name (str): The name of the CL function
-            cl_code_file (str): The location of the code file
+            cl_code_file (str or Traversable): The location of the code file
             var_replace_dict (dict): In the cl_code file these replacements will be made
                 (using the % format function of Python)
         """
         self._var_replace_dict = var_replace_dict
 
-        with open(os.path.abspath(cl_code_file), 'r') as f:
-            code = f.read()
+        if isinstance(cl_code_file, Traversable):
+            code = cl_code_file.read_text()
+        else:
+            with open(os.path.abspath(cl_code_file), 'r') as f:
+                code = f.read()
 
         if var_replace_dict is not None:
             code = code % var_replace_dict
